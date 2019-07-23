@@ -1,6 +1,9 @@
 package Modal;
 
 
+import java.awt.*;
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Play {
 
     private static Play instance = null;
@@ -15,7 +18,7 @@ public class Play {
     //
     public static Play getInstance() {
         if (instance == null) {
-            instance = new Game();
+            instance = new Play();
         }
         return instance;
     }
@@ -27,24 +30,24 @@ public class Play {
 //        putHero();
 //    }
 //
-//    private void generateMap() {
-//        int level = hero.getLevel();
-//        mapSize = (level - 1) * 5 + 10 - (level % 2);
-//        map = new boolean[mapSize][mapSize];
-//    }
+    private void generateMap() {
+        int level = hero.getLevel();
+        mapSize = (level - 1) * 5 + 10 - (level % 2);
+        map = new boolean[mapSize][mapSize];
+    }
 //
-//    private void generateVillains() {
-//        int rand;
-//        int level = hero.getLevel();
-//
-//        for (int i = 0; i < mapSize; i++) {
-//            for (int j = 0; j < mapSize; j++) {
-//                rand = ThreadLocalRandom.current().nextInt(0, 101);
-//                if ((level + 1) * 10 >= rand)
-//                    map[i][j] = true;
-//            }
-//        }
-//    }
+    private void generateVillains() {
+        int rand;
+        int level = hero.getLevel();
+
+        for (int i = 0; i < mapSize; i++) {
+            for (int j = 0; j < mapSize; j++) {
+                rand = ThreadLocalRandom.current().nextInt(0, 101);
+                if ((level + 1) * 10 >= rand)
+                    map[i][j] = true;
+            }
+        }
+    }
 //
 //    public Villain generateVillain() {
 //        int attack = ThreadLocalRandom.current().nextInt(hero.getAttack() - 20, hero.getAttack() + 2 + hero.getLevel());
