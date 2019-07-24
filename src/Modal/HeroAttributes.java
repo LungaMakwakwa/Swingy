@@ -1,6 +1,8 @@
 package Modal;
 
-public class HeroAttributes {
+import java.util.concurrent.ThreadLocalRandom;
+
+public abstract class HeroAttributes {
 
 
     //@NotNull(message = "Name cannot be null")
@@ -16,14 +18,14 @@ public class HeroAttributes {
     //@Min(value = 1, message = "Hit points should not be less than 1")
     protected int hitPoints;
 
-    public Character(String name, int attack, int defense, int hitPoints) {
+    public HeroAttributes(String name, int attack, int defense, int hitPoints) {
         this.name = name;
         this.attack = attack;
         this.defense = defense;
         this.hitPoints = hitPoints;
     }
 
-    private void attack(Character opponent) {
+    private void attack(HeroAttributes opponent) {
         if (this.attack > opponent.defense) {
             opponent.setHitPoints(opponent.getHitPoints() - (this.attack - opponent.defense));
         } else if (ThreadLocalRandom.current().nextInt(0, 10) <= 2) {
@@ -31,7 +33,7 @@ public class HeroAttributes {
         }
     }
 
-    public boolean fight(Character opponent) {
+    public boolean fight(HeroAttributes opponent) {
         while (opponent.getHitPoints() > 0 && this.getHitPoints() > 0) {
             this.attack(opponent);
             opponent.attack(this);

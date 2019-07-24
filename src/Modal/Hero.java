@@ -3,7 +3,7 @@ import Modal.Artifact.Armor;
 import Modal.Artifact.Helm;
 import Modal.Artifact.Weapon;
 
-public class Hero {
+public class Hero extends HeroAttributes{
 
     private Weapon weapon;
     private Armor armor;
@@ -63,48 +63,48 @@ public class Hero {
 //        }
 //    }
 
-//    public void equipWeapon(Weapon weapon) {
-//        if (this.weapon != null) {
-//            this.attack -= this.weapon.getPoints();
-//        }
-//        this.attack += weapon.getPoints();
-//        this.weapon = weapon;
-//    }
+    public void equipWeapon(Weapon weapon) {
+        if (this.weapon != null) {
+            this.attack -= this.weapon.getPoints();
+        }
+        this.attack += weapon.getPoints();
+        this.weapon = weapon;
+    }
 
-//    public void equipHelm(Helm helm) {
-//        if (this.helm != null) {
-//            this.hitPoints -= this.helm.getPoints();
-//            if (this.hitPoints + helm.getPoints() <= 0) {
-//                this.hitPoints += this.helm.getPoints();
-//                return;
-//            }
-//        }
-//        this.hitPoints += helm.getPoints();
-//        this.helm = helm;
-//    }
+    public void equipHelm(Helm helm) {
+        if (this.helm != null) {
+            this.hitPoints -= this.helm.getPoints();
+            if (this.hitPoints + helm.getPoints() <= 0) {
+                this.hitPoints += this.helm.getPoints();
+                return;
+            }
+        }
+        this.hitPoints += helm.getPoints();
+        this.helm = helm;
+    }
 
-//    public void equipArmor(Armor armor) {
-//        if (this.armor != null) {
-//            this.defense -= this.armor.getPoints();
-//        }
-//        this.defense += armor.getPoints();
-//        this.armor = armor;
-//    }
+    public void equipArmor(Armor armor) {
+        if (this.armor != null) {
+            this.defense -= this.armor.getPoints();
+        }
+        this.defense += armor.getPoints();
+        this.armor = armor;
+    }
 
-//    public void addExperience(int addXP) {
-//        int nextLevel = (level + 1) * 1000 + level * level * 450;
-//
-//        if (experience + addXP >= nextLevel)
-//            levelUp();
-//        experience += addXP;
-//    }
+    public void addExperience(int addXP) {
+        int nextLevel = (level + 1) * 1000 + level * level * 450;
 
-//    private void levelUp() {
-//        level++;
-//        hitPoints += 50 + level * 10;
-//        attack += level * 3;
-//        defense += level * 2;
-//    }
+        if (experience + addXP >= nextLevel)
+            levelUp();
+        experience += addXP;
+    }
+
+    private void levelUp() {
+        level++;
+        hitPoints += 50 + level * 10;
+        attack += level * 3;
+        defense += level * 2;
+    }
 
     public Weapon getWeapon() {
         return weapon;
