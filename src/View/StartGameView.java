@@ -3,7 +3,6 @@ package View;
 import Controller.StartControl;
 
 import java.util.Scanner;
-import
 
 public class StartGameView {
 
@@ -17,13 +16,14 @@ public class StartGameView {
 
     private StartControl controller;
 
-    @Override
+    //@Override
     public void start() {
 
+        //Main abc = new Main();
         controller = new StartControl(this);
         System.out.println("You are in console RPG game, enter available commands to play.");
 
-        Scanner scanner = Main.getScanner();
+        Scanner scanner = SelectPlayerView.getScanner();
         System.out.println();
         System.out.println("CREATE - to create hero");
         System.out.println("SELECT - to select already created hero");
@@ -47,7 +47,7 @@ public class StartGameView {
         }
     }
 
-    @Override
+    //@Override
     public void openCreateHero() {
         new HeroCreationView().start();
     }
@@ -57,7 +57,7 @@ public class StartGameView {
         new StartViewGUI().start();
     }*/
 
-    @Override
+   // @Override
     public void openSelectHero() {
         new SelectPlayerView().start();
     }

@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 public class SelectPlayerView {
 
+    private static Scanner scanner;
+
 //    void start();
 //
 //    void updateInfo(String info);
@@ -18,10 +20,16 @@ public class SelectPlayerView {
 //
 //    void openCreateHero();
 
+    public static Scanner getScanner() {
+        if (scanner == null)
+            scanner = new Scanner(System.in);
+        return scanner;
+    }
+
     private SelectHero controls;
     private int lastIdx = -1;
 
-    @Override
+    //@Override
     public void start() {
         controls = new SelectHero(this);
 
@@ -29,7 +37,7 @@ public class SelectPlayerView {
     }
 
     private void getInput() {
-        Scanner scanner = Main.getScanner();
+        Scanner scanner = getScanner();
 
         System.out.println("Available heroes: ");
         //printHeroes(controls.getListData());
@@ -76,23 +84,23 @@ public class SelectPlayerView {
         }
     }
 
-    @Override
+    //Override
     public void updateInfo(String info) {
         System.out.println(info);
     }
 
-    @Override
+    //@Override
     public void showErrorMessage(String message) {
         System.out.println("Error: " + message);
         getInput();
     }
 
-    @Override
+    //@Override
     public void openGame() {
         new GamePlayView().start();
     }
 
-    @Override
+    //@Override
     public void openCreateHero() {
         new HeroCreationView().start();
     }

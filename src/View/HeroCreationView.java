@@ -19,16 +19,16 @@ public class HeroCreationView {
 
     private CreateHero controls;
 
-    @Override
+    //@Override
     public void start() {
         controls = new CreateHero(this);
 
         getUserInput();
     }
 
-    @Override
+    //@Override
     public void getUserInput() {
-        Scanner scanner = Main.getScanner();
+        Scanner scanner = SelectPlayerView.getScanner();
 
         System.out.println("To create hero enter his name and class.");
         System.out.println("Enter name:");
@@ -57,12 +57,12 @@ public class HeroCreationView {
         }
     }
 
-    @Override
+    //@Override
     public void showErrorMessage(String message) {
         System.out.println("Error: " + message);
     }
 
-    @Override
+   // @Override
     public void openGame() {
         new StartGameView().start();
     }
