@@ -1,4 +1,5 @@
 
+import DB.Database;
 import View.StartGameView;
 import javax.swing.*;
 import java.util.Scanner;
@@ -18,7 +19,7 @@ public class Main {
 //            System.exit(1);
 //        }
 //
-//        //DataBase.connect();
+        Database.connect();
 //
 //        if (args[0].equals("console"))
             new StartGameView().start();
@@ -52,11 +53,11 @@ public class Main {
 //        return scanner;
 //    }
 
-    /*public static void closeConnections() {
-       // DataBase.close();
+    public static void closeConnections() {
+       Database.close();
         if (scanner != null)
             scanner.close();
-    }*/
+    }
 
 
     /*private static void frameListener() {
