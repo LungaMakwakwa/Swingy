@@ -1,24 +1,15 @@
 package View;
 
-import Controller.Controls;
+
 import Controller.SelectHero;
-import Controller.StartControl;
+
 
 import java.util.Scanner;
 
-public class SelectPlayerView {
+public class SelectPlayerView implements SelectPlayerInterface {
 
     private static Scanner scanner;
 
-//    void start();
-//
-//    void updateInfo(String info);
-//
-//    void showErrorMessage(String message);
-//
-//    void openGame();
-//
-//    void openCreateHero();
 
     public static Scanner getScanner() {
         if (scanner == null)
@@ -29,7 +20,7 @@ public class SelectPlayerView {
     private SelectHero controls;
     private int lastIdx = -1;
 
-    //@Override
+    @Override
     public void start() {
         controls = new SelectHero(this);
 
@@ -40,7 +31,7 @@ public class SelectPlayerView {
         Scanner scanner = getScanner();
 
         System.out.println("Available heroes: ");
-        //printHeroes(controls.getListData());
+        printHeroes(controls.getListData());
 
         System.out.println();
         System.out.println("CREATE - to create hero");
@@ -84,23 +75,23 @@ public class SelectPlayerView {
         }
     }
 
-    //Override
+    @Override
     public void updateInfo(String info) {
         System.out.println(info);
     }
 
-    //@Override
+    @Override
     public void showErrorMessage(String message) {
         System.out.println("Error: " + message);
         getInput();
     }
 
-    //@Override
+    @Override
     public void openGame() {
         new GamePlayView().start();
     }
 
-    //@Override
+    @Override
     public void openCreateHero() {
         new HeroCreationView().start();
     }

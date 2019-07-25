@@ -6,17 +6,21 @@ import java.util.Scanner;
 public class Main {
 
     //private static JFrame frame;
-    private static Scanner scanner;
+    //private static Scanner scanner;
 
     public static void main(String[] args) {
-        if (args.length != 1 || (!args[0].equals("console") && !args[0].equals("gui"))) {
-            System.out.println("Usage: program console | gui");
-            System.exit(1);
-        }
 
-        //DataBase.connect();
-
-        if (args[0].equals("console"))
+//        String console = "console";
+//        args[0] = console;
+//
+//        if (args.length != 1 || (!args[0].equals("console") && !args[0].equals("gui"))) {
+//            System.out.println("Usage: program console | gui");
+//            System.exit(1);
+//        }
+//
+//        //DataBase.connect();
+//
+//        if (args[0].equals("console"))
             new StartGameView().start();
 //        else if (args[0].equals("gui"))
 //            new StartViewGUI().start();

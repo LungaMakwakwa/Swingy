@@ -6,23 +6,7 @@ import Modal.Points;
 
 import java.util.Scanner;
 
-public class GamePlayView {
-
-//    void start();
-//
-//    void printMap(boolean[][] map, Points heroCoord);
-//
-//    void update(Play play);
-//
-//    void gameFinished();
-//
-//    void showMessage(String message);
-//
-//    void getVillainCollisionInput();
-//
-//    boolean replaceArtifact(String replaceMessage);
-//
-//    void switchView();
+public class GamePlayView implements GamePlayViewInterface{
 
     private Controls controls;
 
@@ -45,7 +29,7 @@ public class GamePlayView {
     }
 
     private void getUserInput() {
-        Scanner scanner = Main.getScanner();
+        Scanner scanner = SelectPlayerView.getScanner();
 
         System.out.println("NORTH, EAST, SOUTH, WEST - to move to this direction");
         System.out.println("SWITCH - to switch to GUI view");
@@ -91,8 +75,8 @@ public class GamePlayView {
     @Override
     public void gameFinished() {
         System.out.println("See you!");
-        Main.getFrame().dispose();
-        Main.closeConnections();
+       // Main.getFrame().dispose();
+        //Main.closeConnections();
     }
 
     @Override
@@ -102,7 +86,7 @@ public class GamePlayView {
 
     @Override
     public void getVillainCollisionInput() {
-        Scanner scanner = Main.getScanner();
+        Scanner scanner = SelectPlayerView.getScanner();
 
         System.out.println();
         System.out.println("You moved to position occupied by villain");
@@ -126,7 +110,7 @@ public class GamePlayView {
 
     @Override
     public boolean replaceArtifact(String replaceMessage) {
-        Scanner scanner = Main.getScanner();
+        Scanner scanner = SelectPlayerView.getScanner();
 
         System.out.println();
         System.out.println("Would you like to replace " + replaceMessage + "?");

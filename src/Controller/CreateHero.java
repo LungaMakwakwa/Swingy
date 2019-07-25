@@ -1,15 +1,16 @@
 package Controller;
 
 import Modal.Hero;
-import Modal.HeroFactory;
+import Modal.HeroCreation;
 import Modal.Play;
+import View.HeroCreationView;
 
 public class CreateHero {
 
-    private CreateHero view;
+    private HeroCreationView view;
     private Play play;
 
-    public CreateHero(CreateHero view) {
+    public CreateHero(HeroCreationView view) {
         this.view = view;
         play = Play.getInstance();
     }

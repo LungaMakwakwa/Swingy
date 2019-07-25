@@ -1,32 +1,22 @@
 package View;
 
 /* whole hero class without split*/
-
-import Controller.Controls;
 import Controller.CreateHero;
 
 import java.util.Scanner;
 
-public class HeroCreationView {
-
-//    void start();
-//
-//    void getUserInput();
-//
-//    void showErrorMessage(String message);
-//
-//    void openGame();
+public class HeroCreationView implements HeroCreationInterface {
 
     private CreateHero controls;
 
-    //@Override
+    @Override
     public void start() {
         controls = new CreateHero(this);
 
         getUserInput();
     }
 
-    //@Override
+    @Override
     public void getUserInput() {
         Scanner scanner = SelectPlayerView.getScanner();
 
@@ -57,12 +47,12 @@ public class HeroCreationView {
         }
     }
 
-    //@Override
+    @Override
     public void showErrorMessage(String message) {
         System.out.println("Error: " + message);
     }
 
-   // @Override
+   @Override
     public void openGame() {
         new StartGameView().start();
     }

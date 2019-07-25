@@ -4,19 +4,13 @@ import Controller.StartControl;
 
 import java.util.Scanner;
 
-public class StartGameView {
+public class StartGameView implements StartGameInterface {
 
-//    void start();
-//
-//    void openCreateHero();
-//
-//    void switchView();
-//
-//    void openSelectHero();
+
 
     private StartControl controller;
 
-    //@Override
+    @Override
     public void start() {
 
         //Main abc = new Main();
@@ -47,17 +41,17 @@ public class StartGameView {
         }
     }
 
-    //@Override
+    @Override
     public void openCreateHero() {
         new HeroCreationView().start();
     }
 
-    /*@Override
+    @Override
     public void switchView() {
-        new StartViewGUI().start();
-    }*/
+        //new StartViewGUI().start();
+    }
 
-   // @Override
+   @Override
     public void openSelectHero() {
         new SelectPlayerView().start();
     }
