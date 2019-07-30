@@ -1,8 +1,10 @@
 package View;
 
+import Modal.Play;
+
 public interface SelectPlayerInterface {
 
-        void start();
+    void start();
 
     void updateInfo(String info);
 
@@ -11,4 +13,6 @@ public interface SelectPlayerInterface {
     void openGame();
 
     void openCreateHero();
+
+
 }

@@ -2,6 +2,7 @@ package View;
 
 
 import Controller.SelectHero;
+import Modal.Play;
 
 
 import java.util.Scanner;
@@ -79,6 +80,8 @@ public class SelectPlayerView implements SelectPlayerInterface {
     public void updateInfo(String info) {
         System.out.println(info);
     }
+
+
 
     @Override
     public void showErrorMessage(String message) {

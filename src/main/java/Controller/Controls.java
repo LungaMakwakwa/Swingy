@@ -1,9 +1,11 @@
 package Controller;
 
+import DB.Database;
 import Modal.Artifact.Armor;
 import Modal.Artifact.Artifacts;
 import Modal.Artifact.Helm;
 import Modal.Artifact.Weapon;
+import Modal.Hero;
 import Modal.Play;
 import Modal.Points;
 import Modal.Villians;
@@ -39,22 +41,22 @@ public class Controls {
         previousPosition.setY((int)y);
 
         switch (direction.toUpperCase()) {
-            case "NORTH":
+            case "W":
                 y--;
                 break;
-            case "EAST":
+            case "D":
                 x++;
                 break;
-            case "SOUTH":
+            case "S":
                 y++;
                 break;
-            case "WEST":
+            case "A":
                 x--;
                 break;
         }
 
         if (x < 0 || y < 0 || x >= play.getMapSize() || y >= play.getMapSize()) {
-        //    winGame();
+            winGame();
             return;
         }
 
@@ -69,17 +71,17 @@ public class Controls {
             view.update(play);
     }
 
-    /*private void winGame() {
+    private void winGame() {
         view.showMessage("You win! And got additional " + play.getMapSize() * 100 + "xp!");
         addExperience(play.getMapSize() * 100);
         updateDataBase();
         view.gameFinished();
-    }*/
+    }
 
-    /*private void updateDataBase() {
+    private void updateDataBase() {
         Hero hero = play.getHero();
-        DataBase.updateHero(hero);
-    }*/
+        Database.updateHero(hero);
+    }
 
     private void villainCollision() {
         view.getVillainCollisionInput();

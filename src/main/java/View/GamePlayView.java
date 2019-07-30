@@ -25,25 +25,29 @@ public class GamePlayView implements GamePlayViewInterface{
                 "," + play.getHeroCoord().getY() + ")");
         System.out.println("------------------------");
 
+
+        //System.out.println("map :" + play.getMap());
+        //System.out.println("hero coords :" + play.getHeroCoord());
+        printMap(play.getMap(), play.getHeroCoord());
         getUserInput();
     }
 
     private void getUserInput() {
         Scanner scanner = SelectPlayerView.getScanner();
 
-        System.out.println("NORTH, EAST, SOUTH, WEST - to move to this direction");
-        System.out.println("SWITCH - to switch to GUI view");
-        System.out.println("Commands (NORTH, EAST, SOUTH, WEST, SWITCH):");
+        System.out.println("W: UP, D: RIGHT, S: Down A: LEFT - to move to this direction");
+        //System.out.println("SWITCH - to switch to GUI view");
+        System.out.println("Commands (W: UP, D: RIGHT, S: Down A: LEFT):");
         while (scanner.hasNext()) {
             String input = scanner.nextLine();
 
             if ("map".equalsIgnoreCase(input)) {
                 controls.onPrintMap();
                 break;
-            } else if ("north".equalsIgnoreCase(input) ||
-                    "east".equalsIgnoreCase(input) ||
-                    "south".equalsIgnoreCase(input) ||
-                    "west".equalsIgnoreCase(input)) {
+            } else if ("W".equalsIgnoreCase(input) ||
+                    "D".equalsIgnoreCase(input) ||
+                    "S".equalsIgnoreCase(input) ||
+                    "A".equalsIgnoreCase(input)) {
                 controls.onMove(input);
                 break;
             } else if ("switch".equalsIgnoreCase(input)) {
