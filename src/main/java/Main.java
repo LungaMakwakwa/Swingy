@@ -53,11 +53,11 @@ public class Main {
 //        return scanner;
 //    }
 
-    public static void closeConnections() {
-       Database.close();
-        if (scanner != null)
-            scanner.close();
-    }
+//    public static void closeConnections() {
+//       Database.close();
+//        if (scanner != null)
+//            scanner.close();
+//    }
 
 
     /*private static void frameListener() {

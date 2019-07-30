@@ -16,7 +16,7 @@ public class StartControl{
     }
 
     public void onSwitchButtonPressed() {
-    //    view.switchView();
+        //view.switchView();
         System.out.println("only Console view available");
     }
 
