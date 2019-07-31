@@ -1,6 +1,7 @@
 package View;
 
 import Controller.Controls;
+import DB.CloseDB;
 import Modal.Play;
 import Modal.Points;
 
@@ -25,9 +26,6 @@ public class GamePlayView implements GamePlayViewInterface{
                 "," + play.getHeroCoord().getY() + ")");
         System.out.println("------------------------");
 
-
-        //System.out.println("map :" + play.getMap());
-        //System.out.println("hero coords :" + play.getHeroCoord());
         printMap(play.getMap(), play.getHeroCoord());
         getUserInput();
     }
@@ -36,7 +34,6 @@ public class GamePlayView implements GamePlayViewInterface{
         Scanner scanner = SelectPlayerView.getScanner();
 
         System.out.println("W: UP, D: RIGHT, S: Down A: LEFT - to move to this direction");
-        //System.out.println("SWITCH - to switch to GUI view");
         System.out.println("Commands (W: UP, D: RIGHT, S: Down A: LEFT):");
         while (scanner.hasNext()) {
             String input = scanner.nextLine();
@@ -78,9 +75,7 @@ public class GamePlayView implements GamePlayViewInterface{
 
     @Override
     public void gameFinished() {
-        System.out.println("See you!");
-       // Main.getFrame().dispose();
-        //Main.closeConnections();
+        CloseDB.closeConnections();
     }
 
     @Override
@@ -94,16 +89,16 @@ public class GamePlayView implements GamePlayViewInterface{
 
         System.out.println();
         System.out.println("You moved to position occupied by villain");
-        System.out.println("FIGHT - to fight with villain");
-        System.out.println("RUN - to run, 50% chance to move to the previous position");
+        System.out.println("F - to fight with villain");
+        System.out.println("R - If he catch you. You have no choice but fight");
         System.out.println("Commands (FIGHT, RUN):");
         while (scanner.hasNext()) {
             String input = scanner.nextLine();
 
-            if ("fight".equalsIgnoreCase(input)) {
+            if ("F".equalsIgnoreCase(input)) {
                 controls.onFight();
                 break;
-            } else if ("run".equalsIgnoreCase(input)) {
+            } else if ("R".equalsIgnoreCase(input)) {
                 controls.onRun();
                 break;
             } else {

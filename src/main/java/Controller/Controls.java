@@ -129,7 +129,7 @@ public class Controls {
             play.getMap()[play.getHeroCoord().getY()][play.getHeroCoord().getX()] = false;
             setArtifact(villians.getArtifact());
         } else {
-            view.showMessage("Game over :(");
+            view.showMessage("You are dead");
             view.gameFinished();
         }
     }

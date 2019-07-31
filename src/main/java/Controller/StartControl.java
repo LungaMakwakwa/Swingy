@@ -15,11 +15,6 @@ public class StartControl{
         view.openCreateHero();
     }
 
-    public void onSwitchButtonPressed() {
-        //view.switchView();
-        System.out.println("only Console view available");
-    }
-
     public void onSelectHeroButtonPressed() {
         view.openSelectHero();
     }

@@ -16,9 +16,8 @@ public class Database {
     public static void connect() {
         Connection conn = null;
         try {
-            //Class.forName("org.sqlite.JDBC");
             conn = DriverManager.getConnection(DATA_BASE_URL);
-        } catch (SQLException e /*| ClassNotFoundException e*/) {
+        } catch (SQLException e) {
             System.out.println("not connected");
             System.out.println(e.getMessage());
         }
@@ -113,6 +112,7 @@ public class Database {
     }
 
     public static void updateHero(Hero hero) {
+
         String sqlQuery = "UPDATE heroes SET level = ?, xp = ?, attack = ?, defense = ?, hp = ? , " +
                 "weapon_name = ?, weapon_value = ?, helm_name = ?, helm_value = ?, armor_name = ?, armor_value = ? " +
                 "WHERE id = ?";
@@ -138,10 +138,13 @@ public class Database {
             }
 
             pstmt.setInt(12, hero.getId());
+            //System.out.println("update successful");
 
-            pstmt.executeUpdate();
+            int lee = pstmt.executeUpdate();
+            System.out.println(lee);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            System.out.println("update FAILED");
         }
     }
 }

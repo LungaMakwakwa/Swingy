@@ -19,21 +19,18 @@ public class StartGameView implements StartGameInterface {
 
         Scanner scanner = SelectPlayerView.getScanner();
         System.out.println();
-        System.out.println("CREATE - to create hero");
-        System.out.println("SELECT - to select already created hero");
+        System.out.println("1 - to create hero");
+        System.out.println("2 - to select already created hero");
         //System.out.println("SWITCH - to switch to GUI view");
-        System.out.println("Commands (CREATE, SELECT, SWITCH):");
+        System.out.println("Commands (1, 2):");
         while (scanner.hasNext()) {
             String input = scanner.nextLine();
 
-            if ("create".equalsIgnoreCase(input)) {
+            if ("1".equalsIgnoreCase(input)) {
                 controller.onCreateHeroButtonPressed();
                 break;
-            } else if ("select".equalsIgnoreCase(input)) {
+            } else if ("2".equalsIgnoreCase(input)) {
                 controller.onSelectHeroButtonPressed();
-                break;
-            } else if ("switch".equalsIgnoreCase(input)) {
-                controller.onSwitchButtonPressed();
                 break;
             } else {
                 System.out.println("Unknown command");
@@ -46,10 +43,6 @@ public class StartGameView implements StartGameInterface {
         new HeroCreationView().start();
     }
 
-    @Override
-    public void switchView() {
-        //new StartViewGUI().start();
-    }
 
    @Override
     public void openSelectHero() {
