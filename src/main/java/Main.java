@@ -1,4 +1,3 @@
-
 import DB.Database;
 import View.StartGameView;
 import javax.swing.*;

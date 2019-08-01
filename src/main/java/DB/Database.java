@@ -16,8 +16,10 @@ public class Database {
     public static void connect() {
         Connection conn = null;
         try {
+
+            Class.forName("org.sqlite.JDBC");
             conn = DriverManager.getConnection(DATA_BASE_URL);
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             System.out.println("not connected");
             System.out.println(e.getMessage());
         }
