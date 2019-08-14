@@ -16,10 +16,8 @@ public class Database {
     public static void connect() {
         Connection conn = null;
         try {
-
-            Class.forName("org.sqlite.JDBC");
             conn = DriverManager.getConnection(DATA_BASE_URL);
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             System.out.println("not connected");
             System.out.println(e.getMessage());
         }
@@ -140,7 +138,6 @@ public class Database {
             }
 
             pstmt.setInt(12, hero.getId());
-            //System.out.println("update successful");
 
             int lee = pstmt.executeUpdate();
             System.out.println(lee);

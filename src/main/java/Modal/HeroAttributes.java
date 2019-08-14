@@ -1,22 +1,33 @@
 package Modal;
 
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.concurrent.ThreadLocalRandom;
+
+
+
+@Getter
+@Setter
 
 public abstract class HeroAttributes {
 
-
-    //@NotNull(message = "Name cannot be null")
-    //@Size(min = 2, max = 16, message = "Name length should not be less than 2 or greater than 16")
+    @NotNull
+    @Size(min= 2, max = 20, message = "charecter name should be between 2 and 16")
     protected String name;
 
-    //@Min(value = 0, message = "Attack should not be less than 0")
+    @NotNull
     protected int attack;
 
-    //@Min(value = 0, message = "Defense should not be less than 0")
+    @NotNull
     protected int defense;
 
-    //@Min(value = 1, message = "Hit points should not be less than 1")
+    @NotNull
     protected int hitPoints;
+
 
     public HeroAttributes(String name, int attack, int defense, int hitPoints) {
         this.name = name;
@@ -41,7 +52,7 @@ public abstract class HeroAttributes {
         return this.getHitPoints() > 0;
     }
 
-    public String getName() {
+    /*public String getName() {
         return name;
     }
 
@@ -71,5 +82,5 @@ public abstract class HeroAttributes {
 
     public void setHitPoints(int hitPoints) {
         this.hitPoints = hitPoints;
-    }
+    }*/
 }

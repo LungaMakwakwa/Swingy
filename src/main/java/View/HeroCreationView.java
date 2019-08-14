@@ -23,11 +23,6 @@ public class HeroCreationView implements HeroCreationInterface {
         System.out.println("To create hero enter his name and class.");
         System.out.println("Enter name:");
         String name = scanner.nextLine();
-        /*System.out.println("Classes: attack  defense   hp\n" +
-                "Knight  40      20      100\n" +
-                "Elf     30      15      90\n"  +
-                "Priest  25      25      90\n"  +
-                "Enter class name: ");*/
         System.out.println("+---------------------------------+");
         System.out.println("| CLASS  | ATTACK | DEFENSE | HP  |");
         System.out.println("|---------------------------------|");

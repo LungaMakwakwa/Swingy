@@ -1,5 +1,11 @@
 package Modal.Artifact;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
+
 public abstract class Artifacts {
 
     private int points;
@@ -10,13 +16,13 @@ public abstract class Artifacts {
         this.points = points;
     }
 
-    public int getPoints() {
+    /*public int getPoints() {
         return points;
     }
 
     public String getName() {
         return name;
-    }
+    }*/
 
     @Override
     public String toString() {

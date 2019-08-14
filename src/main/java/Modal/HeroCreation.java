@@ -3,6 +3,12 @@ package Modal;
 import Modal.Artifact.Armor;
 import Modal.Artifact.Helm;
 import Modal.Artifact.Weapon;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+
 
 public class HeroCreation {
 
@@ -18,7 +24,7 @@ public class HeroCreation {
     private Armor armor;
     private Helm helm;
 
-    public void setId(int id) {
+    /*public void setId(int id) {
         this.id = id;
     }
 
@@ -60,7 +66,7 @@ public class HeroCreation {
 
     public void setExperience(int experience) {
         this.experience = experience;
-    }
+    }*/
 
     public Hero getHero() {
         return new Hero(name, attack, defense, hitPoints, id, heroClass, level, experience, weapon, armor, helm);

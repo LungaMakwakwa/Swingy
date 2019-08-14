@@ -1,14 +1,20 @@
 package Modal;
 
 
-import java.awt.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 import Modal.Artifact.Armor;
 import Modal.Artifact.Artifacts;
 import Modal.Artifact.Helm;
 import Modal.Artifact.Weapon;
-import Modal.Points;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.concurrent.ThreadLocalRandom;
+
+@Setter
+@Getter
+
+
 
 public class Play {
 
@@ -21,40 +27,40 @@ public class Play {
 
     private Play() {
     }
-    //
+
     public static Play getInstance() {
         if (instance == null) {
             instance = new Play();
         }
         return instance;
     }
-//
+
     public void initGame(Hero hero) {
         this.hero = hero;
         generateMap();
         generateVillains();
         putHero();
     }
-//
+
     private void generateMap() {
         int level = hero.getLevel();
         mapSize = (level - 1) * 5 + 10 - (level % 2);
         map = new boolean[mapSize][mapSize];
     }
-//
+
     private void generateVillains() {
         int rand;
         int level = hero.getLevel();
 
         for (int i = 0; i < mapSize; i++) {
             for (int j = 0; j < mapSize; j++) {
-                rand = ThreadLocalRandom.current().nextInt(0, 101);
+                rand = ThreadLocalRandom.current().nextInt(0, 100);
                 if ((level + 1) * 10 >= rand)
                     map[i][j] = true;
             }
         }
     }
-//
+
     public Villians generateVillain() {
         int attack = ThreadLocalRandom.current().nextInt(hero.getAttack() - 20, hero.getAttack() + 2 + hero.getLevel());
         int defense = ThreadLocalRandom.current().nextInt(hero.getDefense() - 20, hero.getDefense() + 2 + hero.getLevel());
@@ -80,7 +86,7 @@ public class Play {
             artifacts = new Armor("Shield", ThreadLocalRandom.current().nextInt(1, 4 * (hero.getLevel() + 1)));
         return artifacts;
     }
-//
+
     public int fightResult(Villians villains) {
         int xp = villains.getAttack() + villains.getDefense() + villains.getHitPoints();
         int rand = ThreadLocalRandom.current().nextInt(0, 101);
@@ -92,13 +98,13 @@ public class Play {
 
         return hero.fight(villains) ? xp : -1;
     }
-//
+
     private void putHero() {
         heroCoord = new Points(mapSize / 2, mapSize / 2);
         map[heroCoord.getY()][heroCoord.getX()] = false;
     }
 
-    public int getMapSize() {
+    /*public int getMapSize() {
         return mapSize;
     }
 
@@ -128,5 +134,5 @@ public class Play {
 
     public void setMap(boolean[][] map) {
         this.map = map;
-    }
+    }*/
 }

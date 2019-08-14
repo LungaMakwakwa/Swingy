@@ -2,8 +2,6 @@ package View;
 
 
 import Controller.SelectHero;
-import Modal.Play;
-
 
 import java.util.Scanner;
 
@@ -35,10 +33,10 @@ public class SelectPlayerView implements SelectPlayerInterface {
         printHeroes(controls.getListData());
 
         System.out.println();
-        System.out.println("CREATE - to create hero");
+        //System.out.println("CREATE - to create hero");
         System.out.println("NUMBER - enter number of available hero to see full information");
         System.out.println("SELECT - enter select after entering number");
-        System.out.println("Commands (CREATE, NUMBER, SELECT):");
+        System.out.println("Commands (NUMBER, SELECT):");
         while (scanner.hasNext()) {
             String input = scanner.nextLine();
 

@@ -47,9 +47,6 @@ public class GamePlayView implements GamePlayViewInterface{
                     "A".equalsIgnoreCase(input)) {
                 controls.onMove(input);
                 break;
-            } else if ("switch".equalsIgnoreCase(input)) {
-                controls.onSwitchButtonPressed();
-                break;
             } else {
                 System.out.println("Unknown command");
             }
@@ -63,11 +60,11 @@ public class GamePlayView implements GamePlayViewInterface{
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
                 if (heroCoord.getX() == j && heroCoord.getY() == i)
-                    System.out.print("H ");
+                    System.out.print("[ H ]");
                 else if (map[i][j])
-                    System.out.print("* ");
+                    System.out.print("[ * ]");
                 else
-                    System.out.print(". ");
+                    System.out.print("[ . ]");
             }
             System.out.println();
         }
@@ -113,15 +110,15 @@ public class GamePlayView implements GamePlayViewInterface{
 
         System.out.println();
         System.out.println("Would you like to replace " + replaceMessage + "?");
-        System.out.println("LEAVE - to leave your artifact");
-        System.out.println("REPLACE - to replace by new artifact");
-        System.out.println("Commands (LEAVE, REPLACE):");
+        System.out.println("1 - to leave your artifact");
+        System.out.println("2 - to replace by new artifact");
+        System.out.println("Commands (1, 2):");
         while (scanner.hasNext()) {
             String input = scanner.nextLine();
 
-            if ("leave".equalsIgnoreCase(input)) {
+            if ("1".equalsIgnoreCase(input)) {
                 return false;
-            } else if ("replace".equalsIgnoreCase(input)) {
+            } else if ("2".equalsIgnoreCase(input)) {
                 return true;
             } else {
                 System.out.println("Unknown command");

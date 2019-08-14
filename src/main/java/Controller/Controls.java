@@ -72,7 +72,7 @@ public class Controls {
     }
 
     private void winGame() {
-        view.showMessage("You win! And got additional " + play.getMapSize() * 100 + "xp!");
+        view.showMessage("How you feel about getting  " + play.getMapSize() * 100 + "xp!");
         addExperience(play.getMapSize() * 100);
         updateDataBase();
         view.gameFinished();
@@ -89,7 +89,7 @@ public class Controls {
 
     public void onRun() {
         if (new Random().nextBoolean()) {
-            view.showMessage("You are lucky! And moved to previous position!");
+            view.showMessage("You escaped!");
             play.getHeroCoord().setX(previousPosition.getX());
             play.getHeroCoord().setY(previousPosition.getY());
         } else {
@@ -124,12 +124,12 @@ public class Controls {
         int xp = play.fightResult(villians);
 
         if (xp >= 0) {
-            view.showMessage("You win, and got " + xp + "xp.");
+            view.showMessage("You BEASTED\nThat dude How you feel about: " + xp + "xp.");
             addExperience(xp);
             play.getMap()[play.getHeroCoord().getY()][play.getHeroCoord().getX()] = false;
             setArtifact(villians.getArtifact());
         } else {
-            view.showMessage("You are dead");
+            view.showMessage("You Played yourself\nDEEEEAAAAAD");
             view.gameFinished();
         }
     }
@@ -139,10 +139,6 @@ public class Controls {
         play.getHero().addExperience(addXP);
         if (level != play.getHero().getLevel())
             view.showMessage("Level UP!\nHP, attack and defense were increased!");
-    }
-
-    public void onSwitchButtonPressed() {
-        view.switchView();
     }
 
 }

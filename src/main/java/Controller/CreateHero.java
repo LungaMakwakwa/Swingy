@@ -2,7 +2,6 @@ package Controller;
 
 import DB.Database;
 import Modal.Hero;
-import Modal.HeroCreation;
 import Modal.HeroFactory;
 import Modal.Play;
 import View.HeroCreationView;
@@ -21,9 +20,7 @@ public class CreateHero {
         Hero hero;
         try {
             hero = HeroFactory.newHero(name, heroClass);
-            //hero.validateHero();
-            System.out.println("hero created");
-        } catch (IllegalArgumentException e /*| HeroValidationException e*/) {
+        } catch (IllegalArgumentException e) {
             view.showErrorMessage(e.getMessage());
             view.getUserInput();
             return;
