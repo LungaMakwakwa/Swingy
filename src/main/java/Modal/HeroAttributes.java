@@ -4,6 +4,7 @@ package Modal;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.concurrent.ThreadLocalRandom;
@@ -15,17 +16,18 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class HeroAttributes {
 
-    @NotNull
-    @Size(min= 2, max = 20, message = "charecter name should be between 2 and 16")
+
+    @NotNull(message = "Name cannot be null")
+    @Size(min = 2, max = 16, message = "Name length should not be less than 2 or greater than 16 characters")
     protected String name;
 
-    @NotNull
+    @Min(value = 0, message = "Attack should not be less than 0")
     protected int attack;
 
-    @NotNull
+    @Min(value = 0, message = "Defense should not be less than 0")
     protected int defense;
 
-    @NotNull
+    @Min(value = 1, message = "Hit points should not be less than 1")
     protected int hitPoints;
 
 

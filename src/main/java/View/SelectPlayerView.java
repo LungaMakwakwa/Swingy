@@ -8,6 +8,8 @@ import java.util.Scanner;
 public class SelectPlayerView implements SelectPlayerInterface {
 
     private static Scanner scanner;
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
 
 
     public static Scanner getScanner() {
@@ -33,9 +35,8 @@ public class SelectPlayerView implements SelectPlayerInterface {
         printHeroes(controls.getListData());
 
         System.out.println();
-        //System.out.println("CREATE - to create hero");
         System.out.println("NUMBER - enter number of available hero to see full information");
-        System.out.println("SELECT - enter select after entering number");
+        System.out.println(ANSI_RED + "NB:: SELECT - enter select after entering number" + ANSI_RESET);
         System.out.println("Commands (NUMBER, SELECT):");
         while (scanner.hasNext()) {
             String input = scanner.nextLine();
@@ -50,7 +51,7 @@ public class SelectPlayerView implements SelectPlayerInterface {
                 controls.onSelectButtonPressed(lastIdx);
                 break;
             } else {
-                System.out.println("Unknown command");
+                System.out.println(ANSI_RED + "Unknown command" + ANSI_RESET);
             }
         }
     }

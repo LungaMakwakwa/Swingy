@@ -9,6 +9,8 @@ public class StartGameView implements StartGameInterface {
 
 
     private StartControl controller;
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
 
     @Override
     public void start() {
@@ -33,7 +35,7 @@ public class StartGameView implements StartGameInterface {
                 controller.onSelectHeroButtonPressed();
                 break;
             } else {
-                System.out.println("Unknown command");
+                System.out.println(ANSI_RED + "Unknown command" + ANSI_RESET);
             }
         }
     }

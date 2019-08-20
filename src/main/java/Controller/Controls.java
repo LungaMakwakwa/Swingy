@@ -18,6 +18,9 @@ public class Controls {
     private GamePlayView view;
     private Play play;
     private Points previousPosition;
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
 
     public Controls(GamePlayView view) {
         this.view = view;
@@ -72,7 +75,16 @@ public class Controls {
     }
 
     private void winGame() {
-        view.showMessage("How you feel about getting  " + play.getMapSize() * 100 + "xp!");
+        view.showMessage
+                (ANSI_GREEN + " #     # ####### #     #    #     # ### #     #     #        ##   \n" +
+                              "  #   #  #     # #     #    #  #  #  #  ##    #    ###         #  \n" +
+                              "   # #   #     # #     #    #  #  #  #  # #   #     #           # \n" +
+                              "    #    #     # #     #    #  #  #  #  #  #  #        #####    # \n" +
+                              "    #    #     # #     #    #  #  #  #  #   # #     #           # \n" +
+                              "    #    #     # #     #    #  #  #  #  #    ##    ###         #  \n" +
+                              "    #    #######  #####      ## ##  ### #     #     #        ##   \n" + ANSI_RESET);
+
+        view.showMessage("\nHow you feel about getting " + ANSI_RED + play.getMapSize() * 100 + "xp!" + ANSI_RESET);
         addExperience(play.getMapSize() * 100);
         updateDataBase();
         view.gameFinished();
@@ -124,12 +136,29 @@ public class Controls {
         int xp = play.fightResult(villians);
 
         if (xp >= 0) {
-            view.showMessage("You BEASTED\nThat dude How you feel about: " + xp + "xp.");
+            view.showMessage
+                    (ANSI_GREEN + "#     # #######    ######  #######    #    ######  \n" +
+                                  "#     # #          #     # #         # #   #     # \n" +
+                                  "#     # #          #     # #        #   #  #     # \n" +
+                                  "####### #####      #     # #####   #     # #     # \n" +
+                                  "#     # #          #     # #       ####### #     # \n" +
+                                  "#     # #          #     # #       #     # #     # \n" +
+                                  "#     # #######    ######  ####### #     # ######  \n" + ANSI_RESET);
+
+
+            view.showMessage("\nYou BEASTED\nThat dude How you feel about: " + xp + "xp.");
             addExperience(xp);
             play.getMap()[play.getHeroCoord().getY()][play.getHeroCoord().getX()] = false;
             setArtifact(villians.getArtifact());
         } else {
-            view.showMessage("You Played yourself\nDEEEEAAAAAD");
+            view.showMessage
+                    (ANSI_RED + "  #####     #    #     # #######    ####### #     # ####### ######  \n" +
+                                " #     #   # #   ##   ## #          #     # #     # #       #     # \n" +
+                                " #        #   #  # # # # #          #     # #     # #       #     # \n" +
+                                " #  #### #     # #  #  # #####      #     # #     # #####   ######  \n" +
+                                " #     # ####### #     # #          #     #  #   #  #       #   #   \n" +
+                                " #     # #     # #     # #          #     #   # #   #       #    #  \n" +
+                                "  #####  #     # #     # #######    #######    #    ####### #     # \n" + ANSI_RESET);
             view.gameFinished();
         }
     }

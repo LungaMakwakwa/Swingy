@@ -140,7 +140,7 @@ public class Database {
             pstmt.setInt(12, hero.getId());
 
             int lee = pstmt.executeUpdate();
-            System.out.println(lee);
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("update FAILED");

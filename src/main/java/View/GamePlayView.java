@@ -9,6 +9,12 @@ import java.util.Scanner;
 
 public class GamePlayView implements GamePlayViewInterface{
 
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+
+
     private Controls controls;
 
     @Override
@@ -33,8 +39,7 @@ public class GamePlayView implements GamePlayViewInterface{
     private void getUserInput() {
         Scanner scanner = SelectPlayerView.getScanner();
 
-        System.out.println("W: UP, D: RIGHT, S: Down A: LEFT - to move to this direction");
-        System.out.println("Commands (W: UP, D: RIGHT, S: Down A: LEFT):");
+        System.out.println(ANSI_GREEN + "W: " + ANSI_RESET + "UP, " + ANSI_GREEN + "D: " + ANSI_RESET + "RIGHT, " + ANSI_GREEN + "S: " + ANSI_RESET + "Down, " + ANSI_GREEN + "A: " + ANSI_RESET + "LEFT - to move to this direction");
         while (scanner.hasNext()) {
             String input = scanner.nextLine();
 
@@ -48,7 +53,7 @@ public class GamePlayView implements GamePlayViewInterface{
                 controls.onMove(input);
                 break;
             } else {
-                System.out.println("Unknown command");
+                System.out.println(ANSI_RED + "Unknown command" + ANSI_RESET);
             }
         }
     }
@@ -60,9 +65,9 @@ public class GamePlayView implements GamePlayViewInterface{
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
                 if (heroCoord.getX() == j && heroCoord.getY() == i)
-                    System.out.print("[ H ]");
+                    System.out.print("[" + ANSI_BLUE + " H " + ANSI_RESET + "]");
                 else if (map[i][j])
-                    System.out.print("[ * ]");
+                    System.out.print("[" + ANSI_RED + " * " + ANSI_RESET + "]");
                 else
                     System.out.print("[ . ]");
             }
@@ -99,7 +104,7 @@ public class GamePlayView implements GamePlayViewInterface{
                 controls.onRun();
                 break;
             } else {
-                System.out.println("Unknown command");
+                System.out.println(ANSI_RED + "Unknown command" + ANSI_RESET);
             }
         }
     }
@@ -109,9 +114,9 @@ public class GamePlayView implements GamePlayViewInterface{
         Scanner scanner = SelectPlayerView.getScanner();
 
         System.out.println();
-        System.out.println("Would you like to replace " + replaceMessage + "?");
-        System.out.println("1 - to leave your artifact");
-        System.out.println("2 - to replace by new artifact");
+        System.out.println("Would you like to replace " + ANSI_BLUE + replaceMessage + ANSI_RESET + "?");
+        System.out.println("1 - to " + ANSI_RED + "LEAVE " + ANSI_RESET + "your artifact");
+        System.out.println("2 - to " + ANSI_RED + "REPLACE " + ANSI_RESET + "by new artifact");
         System.out.println("Commands (1, 2):");
         while (scanner.hasNext()) {
             String input = scanner.nextLine();
@@ -121,7 +126,7 @@ public class GamePlayView implements GamePlayViewInterface{
             } else if ("2".equalsIgnoreCase(input)) {
                 return true;
             } else {
-                System.out.println("Unknown command");
+                System.out.println(ANSI_RED + "Unknown command" + ANSI_RESET);
             }
         }
         return false;
